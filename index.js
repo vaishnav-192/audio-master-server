@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
     cors: {
-        origin: "*", // Allow the local server origin
+        origin: "https://your-vercel-app.vercel.app", 
         methods: ["GET", "POST"],
         credentials: true, // Allow credentials if needed
     }
@@ -15,7 +15,7 @@ const io = socketIO(server, {
 
 // CORS configuration for the Express app
 app.use(cors({
-    origin: "*", // Allow the local server origin
+    origin: "https://your-vercel-app.vercel.app", 
     methods: ["GET", "POST"],
     credentials: true // Allow credentials if needed
 }));
@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 // Handle socket connections
 io.on('connection', (socket) => {
     console.log('User connected:', socket.id);
-    const clientIp = socket.request.connection.remoteAddress;
+    const clientIp = socket.handshake.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
 
     // When a user comes online
     socket.on('user_online', (username) => {
