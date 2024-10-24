@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server, {
     cors: {
-        origin: "https://your-vercel-app.vercel.app", 
+        origin: "https://audio-master-server.vercel.app/?vercelToolbarCode=8r5h3mUmIR5A1qy", 
         methods: ["GET", "POST"],
         credentials: true, // Allow credentials if needed
     }
@@ -15,7 +15,7 @@ const io = socketIO(server, {
 
 // CORS configuration for the Express app
 app.use(cors({
-    origin: "https://your-vercel-app.vercel.app", 
+    origin: "https://audio-master-server.vercel.app/?vercelToolbarCode=8r5h3mUmIR5A1qy", 
     methods: ["GET", "POST"],
     credentials: true // Allow credentials if needed
 }));
